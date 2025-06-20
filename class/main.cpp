@@ -1,8 +1,9 @@
 /******************************************************************************
 
-                              Online C++ Compiler.
-               Code, Compile, Run and Debug C++ program online.
-Write your code in this editor and press "Run" button to compile and execute it.
+creating a normal class in CPP
+
+1. all class elements are private by default 
+. in order to be used from the class objects you should put the  public: 
 
 *******************************************************************************/
 
@@ -13,22 +14,30 @@ class Car {
 public:
     string Name ;
     string Colour; 
-    double price;
-    
+    double price;  
 };
 
 
 int main()
 {
     Car myCar;
-    myCar.Name ="fordy";
+    myCar.Name ="Ford";
     myCar.Colour ="Red";
     myCar.price =40000;
     
-    cout<<"Hello World"<<endl;
-    cout<<"Name : "<<myCar.Name<<endl;
+    Car myCar2;
+    myCar2.Name ="Nissan";
+    myCar2.Colour ="Blue";
+    myCar2.price =30000;
+
+    
+    cout<<"Name : "  <<myCar.Name<<endl;
     cout<<"Colour : "<<myCar.Colour<<endl;
-    cout<<"Price : "<<myCar.price<<endl;
+    cout<<"Price : " <<myCar.price<<endl;
+
+    cout<<"Name : "  <<myCar2.Name<<endl;
+    cout<<"Colour : "<<myCar2.Colour<<endl;
+    cout<<"Price : " <<myCar2.price<<endl;
 
     return 0;
 }
