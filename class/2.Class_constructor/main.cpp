@@ -28,7 +28,6 @@ Car(string name,string colour,double price)
     Name=name;
     Colour=colour;
     Price=price;
-
 }
 
 };
@@ -36,14 +35,20 @@ Car(string name,string colour,double price)
 
 int main()
 {
+    //using the constructor first way
     Car myCar("Ford","Red",40000);
-    Car myCar2("Nissan","Blue",30000);
+
+    //using the constructor second way
+    Car myCar2=Car("Nissan","Blue",30000);
 
 
+    cout << "***************************" << endl;
     
     cout<<"Name : "  <<myCar.Name<<endl;
     cout<<"Colour : "<<myCar.Colour<<endl;
     cout<<"Price : " <<myCar.Price<<endl;
+
+    cout << "***************************" << endl;
 
     cout<<"Name : "  <<myCar2.Name<<endl;
     cout<<"Colour : "<<myCar2.Colour<<endl;
