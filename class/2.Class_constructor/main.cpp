@@ -1,6 +1,6 @@
 /******************************************************************************
 
-constructor 
+constructor : A constructor is a special method that's called only once, when an object is first created.
 1, should not have a return type
 2, should has the same name as your class
 
