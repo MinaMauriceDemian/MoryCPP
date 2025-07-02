@@ -1,10 +1,22 @@
 /******************************************************************************
 
 creating a normal class in CPP
+any object is an istance ofa a class
+class can have many instances
+every instance  can perform differently
 
 1. all class elements are private by default 
 . in order to be used from the class objects you should put the  public: 
 
+syntax
+class <name>{
+   // memebers are private by default  
+   private:
+
+protected:
+
+   public: 
+};
 *******************************************************************************/
 
 #include <iostream>
