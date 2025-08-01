@@ -1,7 +1,7 @@
 /******************************************************************************
 
 creating a normal class in CPP
-any object is an istance ofa a class
+any object is an instance of a a class
 class can have many instances
 every instance  can perform differently
 

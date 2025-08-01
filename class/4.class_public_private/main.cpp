@@ -9,7 +9,7 @@ private:
 now if i wanted to change the private elements and also i cannot use the constructor 
 so i have to creatre a public method 
 
-now i will create void changePrice(double newPrice)
+now i will create void changePrice(double newPrice)  (Public method)
 to change the private member "Price"
 
 *******************************************************************************/
@@ -37,6 +37,7 @@ void printInfo()
     cout<<"Colour : "<<Colour<<endl;
     cout<<"Price : " <<Price<<" $"<<endl;
 }
+
 //adding method to change price
 void changePrice(double newPrice)
 {
