@@ -1,0 +1,102 @@
+# Difference Between Deep Copy and Shallow Copy in C++
+
+The key difference between deep copy and shallow copy lies in how they handle pointers and dynamically allocated memory when copying objects.
+
+## Shallow Copy
+
+**What it does:**
+- Copies all member values from one object to another
+- For pointers, it copies only the memory address (pointer value), not the data it points to
+- Both objects end up pointing to the same memory location
+
+**Characteristics:**
+- Default behavior of compiler-generated copy constructor and assignment operator
+- Faster because it doesn't allocate new memory
+- Dangerous when objects manage resources (memory, files, etc.)
+- Leads to problems if one object modifies the data or deletes it
+
+**Example:**
+```cpp
+class ShallowExample {
+    int* data;
+public:
+    ShallowExample(int val) {
+        data = new int(val);
+    }
+    // Compiler provides a shallow copy constructor by default
+};
+
+int main() {
+    ShallowExample obj1(10);
+    ShallowExample obj2 = obj1; // Shallow copy
+    
+    // Both obj1.data and obj2.data point to the same memory
+    // Problem: if one object deletes the data, the other has a dangling pointer
+}
+```
+
+## Deep Copy
+
+**What it does:**
+- Copies all member values
+- For pointers, it allocates new memory and copies the contents
+- Each object has its own independent copy of the data
+
+**Characteristics:**
+- Requires explicit implementation (not provided by default)
+- Slower because it allocates new memory and copies data
+- Safer - objects don't share resources
+- Prevents dangling pointers and double-free errors
+
+**Example:**
+```cpp
+class DeepExample {
+    int* data;
+public:
+    DeepExample(int val) {
+        data = new int(val);
+    }
+    
+    // Deep copy constructor
+    DeepExample(const DeepExample& other) {
+        data = new int(*other.data); // Allocate new memory and copy value
+    }
+    
+    ~DeepExample() {
+        delete data;
+    }
+};
+
+int main() {
+    DeepExample obj1(10);
+    DeepExample obj2 = obj1; // Deep copy
+    
+    // obj1.data and obj2.data point to different memory locations
+    // Each can be modified/deleted independently
+}
+```
+
+## Key Differences
+
+| Aspect          | Shallow Copy | Deep Copy |
+|----------------|-------------|----------|
+| Pointer handling | Copies pointer address | Allocates new memory and copies data |
+| Speed | Faster | Slower |
+| Safety | Less safe (shared resources) | More safe (independent resources) |
+| Default behavior | Yes (compiler-generated) | No (must implement manually) |
+| Memory usage | Shares memory | Uses more memory |
+| Risk of issues | Dangling pointers, double-free | No such risks |
+
+## When to Use Each
+
+**Use shallow copy when:**
+- Your class contains only simple data types (no pointers)
+- You want maximum performance
+- You explicitly want shared ownership (though in this case, consider smart pointers)
+
+**Use deep copy when:**
+- Your class manages resources (memory, files, etc.)
+- You need independent copies of objects
+- You want to avoid sharing of resources between objects
+
+In modern C++, you might also consider using move semantics (with move constructors) when you need to transfer ownership of resources rather than copying them.
